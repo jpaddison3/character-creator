@@ -30,7 +30,7 @@ function App() {
 
   return (
     <main className={styles.characterEditor}>
-      <MaxWidthWrapper className={styles.maxWidthWrapper}>
+      <MaxWidthWrapper>
         <header className={styles.header}>
           <h1 className={styles.title}>Create your Character</h1>
           <p className={styles.description}>
@@ -38,6 +38,19 @@ function App() {
             controls below. What sort of adventure will you embark on?{' '}
           </p>
         </header>
+        <div className={styles.perspective} />
+        {/* This is to the right of the controlColumn, but we want it to be
+            "behind" the controlColumn, so we put it first */}
+        <div className={styles.characterWrapper}>
+          <Character
+            body={body}
+            head={head}
+            face={face}
+            accessory={accessory}
+            skinColor={skinColor}
+            clothesColor={clothesColor}
+          />
+        </div>
         <div className={styles.controlColumn}>
           <ControlPane
             title="Bodies"
@@ -78,16 +91,6 @@ function App() {
         </div>
       </MaxWidthWrapper>
 
-      <div className={styles.characterWrapper}>
-        <Character
-          body={body}
-          head={head}
-          face={face}
-          accessory={accessory}
-          skinColor={skinColor}
-          clothesColor={clothesColor}
-        />
-      </div>
     </main>
   );
 }
